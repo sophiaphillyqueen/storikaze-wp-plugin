@@ -9,6 +9,6 @@
  * License: GPL2+
  */
 
-require_once(dirname(__FILE__) . "/meatofit.php");
+require_once(realpath(dirname(__FILE__) . "/meatofit.php"));
 
 ?>
