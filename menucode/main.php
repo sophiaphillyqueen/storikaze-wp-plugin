@@ -4,6 +4,25 @@
 // the social panel be off.
 add_option('storikaze_social', 'no');
 
+// I expect this (the re-ordering of archive posts to be earliest-
+// -to-latest) to remain 'yes' as default -- but that may change.
+// At any rate - I am definining the option now because I soon
+// plan for it to be, well, optional.
+//   If I set it so that the default is *not* to do this, it will
+// be so that someone can install the plugin anew onto a pre-existing
+// WordPress without any functionality even *temporarily* changing
+// without them wanting it to do so.
+// Option defined in dev-space: 2015-09-01:
+add_option('storikaze_chron_order', 'yes');
+
+// Currently, Storikaze adds shortcode processing to widgets.
+// I plan in the future for this feature to be off-by-default
+// in new installations --- yet it will still need to be
+// on-by-default on older installations out of the Continuity
+// Principle.
+// Option defined in dev-space: 2015-09-01:
+add_option('storikaze_shortc_widget', 'yes');
+
 // By default, there are no Storikaze reference sites.
 //add_option('storikaze_refls','*');
 
