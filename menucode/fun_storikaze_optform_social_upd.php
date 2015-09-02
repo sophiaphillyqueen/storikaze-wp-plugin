@@ -30,6 +30,21 @@ function storikaze_optform_social_upd ( ) {
     return true;
   }
   
+  
+  // Now let us deal with cases of the sort order
+  if ( $_REQUEST{"network"} == "fic_sort_order_off" )
+  {
+    update_option("storikaze_chron_order","no");
+    header($returnhdr);
+    return true;
+  }
+  if ( $_REQUEST{"network"} == "fic_sort_order_on" )
+  {
+    update_option("storikaze_chron_order","yes");
+    header($returnhdr);
+    return true;
+  }
+  
   header($returnhdr);
   return true;
 }

@@ -23,6 +23,15 @@ if ( ! function_exists( 'storikaze_fix_sort_order_in_qry' ) ) :
 function storikaze_fix_sort_order_in_qry ( $query )
 {
 	
+	// For starters, let us obey the preference. That is,
+	// if the admin specifically says not to do this, then
+	// don't do it.
+	$may_reverse_it = get_option('storikaze_chron_order', 'yes');
+	if ( $may_reverse_it == "no" )
+	{
+	  return;
+	}
+	
 	// We do not want the order reversed on the admin panels -
 	// only the actual public web-site.
 	if ( is_admin() ) { return; }
