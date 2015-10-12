@@ -188,6 +188,11 @@ storikaze_tex_gim_set("chbreak",'default',array(
 "slval" => "\n\n\n\n"
 ));
 
+// The next two are placeholders till their true equivalent be
+// developed ....
+add_shortcode( 'storikaze_prtbreak', 'storikaze_tag_chbreak' ); // For ending parts of novels
+add_shortcode( 'storikaze_volbreak', 'storikaze_tag_chbreak' ); // For ending full novels
+
 
 
 // The [storikaze_info] shortcode exists to store information

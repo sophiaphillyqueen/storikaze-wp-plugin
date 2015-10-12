@@ -32,7 +32,7 @@ if ( 2 > 1 )
 if ( ! function_exists('storikaze_adcn_social_fun') ) :
 function storikaze_adcn_social_fun ( $content ) {
   $valido = get_option("storikaze_social","no");
-  if ( $valido != "yes" ) { return; }
+  if ( $valido != "yes" ) { return $content; }
   
   $reto = "";
   $curloc = get_permalink();

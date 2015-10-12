@@ -23,6 +23,11 @@ add_option('storikaze_chron_order', 'yes');
 // Option defined in dev-space: 2015-09-01:
 add_option('storikaze_shortc_widget', 'yes');
 
+// By default, there should be no censor file. It is the duty
+// of the site admin to set one up. Eventually, though, one
+// may be set up for site-specific admins as well.
+add_site_option("storikaze_censor_file","");
+
 // By default, there are no Storikaze reference sites.
 //add_option('storikaze_refls','*');
 
@@ -30,11 +35,13 @@ add_action('admin_menu','storikaze_main_options_menu');
 add_action('admin_post_storikaze_refsite_new','storikaze_optform_reference_new');
 add_action('admin_post_storikaze_social_upd','storikaze_optform_social_upd');
 add_action('admin_post_storikaze_ad_opts','storikaze_optform_ad_opts');
+add_action('admin_post_storikaze_networkwide_opts','storikaze_optform_networkwide_opts'); // All nework non-ad options
 
 function storikaze_main_options_menu ( ) {
   add_menu_page('Storikaze Options', 'Storikaze', 'manage_options', 'storikaze-opts-main', 'storikaze_main_options_page');
   add_submenu_page('storikaze-opts-main','Storikaze Reference Site Options','Reference Sites','manage_options','storikaze-opts-related','storikaze_options_reference');
   add_submenu_page('storikaze-opts-main','AdCode Options','AdCodes','install_plugins','storikaze-opts-adcode','storikaze_options_adcode');
+  add_submenu_page('storikaze-opts-main','Other Network-Wide Options','Network Misc','install_plugins','storikaze-opts-ntwide','storikaze_options_ntwide');
 }
 
 function storikaze_main_options_page ( ) {
@@ -47,6 +54,10 @@ function storikaze_options_reference ( ) {
 
 function storikaze_options_adcode ( ) {
   require_once(dirname(__FILE__) . "/htsg/adcode-items.php");
+}
+
+function storikaze_options_ntwide ( ) {
+  storikaze_lcvar_file(dirname(__FILE__) . "/htsg/networkwide-items.php");
 }
 
 function storikaze_optform_reference_new ( ) {
